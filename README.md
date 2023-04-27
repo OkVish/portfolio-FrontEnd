@@ -115,7 +115,7 @@ que indique su IDE o con el programa Postman o similar para realizar solicitudes
 
 
 ## Tecnologías 
- - Angular CLI version 15.0.5.
+ - Angular CLI version 15.0.5
  - HTML 5
  - Css
  - Bootstrap
