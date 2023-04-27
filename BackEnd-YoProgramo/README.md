@@ -29,7 +29,7 @@ Inicio Cursado :
 Entrega Proyecto Integrador Portfolio Web Full Stack :
 [![](https://img.shields.io/badge/Entrega-Mayo2023-blue)]()
 
-## Color de referencia
+## Colores de referencia
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -62,11 +62,11 @@ Para ejecutar y visualizar el proyecto entre en el siguiente link
 
 - Login con usuario/contraseña
 - Personalizacion y edición
-- Accesibilidad
+- Accesibilidad (diseño simple-colores solidos-apto para lectores de pantalla)
 - Diseño responsivo
 
 
-## Licencia
+## Licencias
 
 Proyecto realizado integramente con recursos, software y servicios gratuitos:
  - Vs Code
@@ -115,6 +115,7 @@ que indique su IDE o con el programa Postman o similar para realizar solicitudes
 
 
 ## Tecnologías 
+ - Angular CLI version 15.0.5
  - HTML 5
  - Css
  - TypeScript
