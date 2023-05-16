@@ -1,0 +1,50 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.experiencia {
+    padding: 40px 40px 60px 40px;
+}
+
+.experiencia .columna {
+    padding: 20px;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.2s ease-in;
+}
+
+.experiencia .columna:hover {
+    color: white;
+    background-color: #00171F;
+}
+
+.educacion i {
+    font-size: 2.5rem;
+    color: #00A8E8;
+    background-color: #0a0a23;
+    padding: 8px 19px;
+    border-radius: 50%;
+}
+
+img {
+    max-width: auto;
+    max-height: auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: black;
+}
+
+
+.educacion-titulo {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
