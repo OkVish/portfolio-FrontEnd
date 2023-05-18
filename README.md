@@ -42,6 +42,7 @@ Entrega Proyecto Integrador Portfolio Web Full Stack :
 ## Capturas
 
 ![App Screenshot](https://github.com/OkVish/Portfolio-Web-YoProgramo/blob/main/Screenshot%202023-04-25%20at%2019-32-58%20FrontendYoProgramo.png?raw=true)
+![App Screenshot](https://github.com/OkVish/portfolio-FrontEnd/blob/main/Diagrama_entidad_relacion.png)
 
 
 ## Deployment
