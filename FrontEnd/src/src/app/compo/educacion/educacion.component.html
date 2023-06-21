@@ -1,0 +1,135 @@
+<hr>
+
+
+<h1>Educación</h1>
+
+<section class="experiencia seccion-clara">
+  <div class="container text-center">
+    <div class="row">
+      <!-- Educacion 1 -->
+      <div class="columna col-12 col-md-4">
+        <img src="../../../assets/UNR LOGO.jpg" alt="Logo UNR">
+        <p class="educacion-titulo">UNR</p>
+        <p> Universidad Nacional de Rosario <br> Carrera de grado en derecho</p>
+        <a class="btn btn-outline-secondary" href="https://www.fder.unr.edu.ar/" role="button" target="_blank">INFO</a>
+        <!--Boton Edicion-->
+        <div class="column">
+          <a class="btn"> <i class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#modalEditar" style="font-size:19px"
+              color="grey"></i> </a>
+          <a class="btn"> <i class="fa fa-times" data-bs-toggle="modal" data-bs-target="#modalEliminar" style="font-size:22px"
+              color="grey"></i> </a>
+        </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  <div class="text-center"><button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+      data-bs-target="#modalAgregar" id="añadir">
+      + Añadir elemento
+    </button></div>
+</section>
+
+<!-- Modal Agregar -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="modalAgregarLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAgregarLabel">Agregar Educación</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Aquí puedes colocar los campos del formulario para agregar una nueva educación -->
+        <form>
+          <!-- Campos del formulario -->
+          <div class="form-group">
+            <label for="nombreedu">Nombre</label>
+            <input type="text" class="form-control" id="nombreedu" [(ngModel)]="newEducation.nombreedu">
+          </div>
+          <div class="form-group">
+            <label for="lugaredu">Lugar</label>
+            <input type="text" class="form-control" id="lugaredu" [(ngModel)]="newEducation.lugaredu">
+          </div>
+          <div class="form-group">
+            <label for="cursoedu">Curso</label>
+            <input type="text" class="form-control" id="cursoedu" [(ngModel)]="newEducation.cursoedu">
+          </div>
+          <div class="form-group">
+            <label for="urledu">URL</label>
+            <input type="text" class="form-control" id="urledu" [(ngModel)]="newEducation.urledu">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addEducation(newEducation)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarLabel">Editar Educación</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Aquí puedes colocar los campos del formulario para editar una educación existente -->
+        <form>
+          <!-- Campos del formulario -->
+          <div class="form-group">
+            <label for="editNombreedu">Nombre</label>
+            <input type="text" class="form-control" id="editNombreedu" [(ngModel)]="selectedEducation.nombreedu">
+          </div>
+          <div class="form-group">
+            <label for="editLugaredu">Lugar</label>
+            <input type="text" class="form-control" id="editLugaredu" [(ngModel)]="selectedEducation.lugaredu">
+          </div>
+          <div class="form-group">
+            <label for="editCursoedu">Curso</label>
+            <input type="text" class="form-control" id="editCursoedu" [(ngModel)]="selectedEducation.cursoedu">
+          </div>
+          <div class="form-group">
+            <label for="editUrledu">URL</label>
+            <input type="text" class="form-control" id="editUrledu" [(ngModel)]="selectedEducation.urledu">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="updateEducation(selectedEducation)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEliminarLabel">Eliminar Educación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de que quieres eliminar esta educación?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="deleteEducation(selectedEducation.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>

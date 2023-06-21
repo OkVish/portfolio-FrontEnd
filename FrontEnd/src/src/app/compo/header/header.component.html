@@ -1,0 +1,60 @@
+<nav class="container-fluid">
+
+  <a> <img src="../../../assets/ArgPRO.png" alt="Logo Argentina Programa" class="img-fluid" id="ArgPro"></a>
+
+  <div class="iconos-redes-sociales d-flex flex-wrap align-items-center ">
+    <a href="https://twitter.com/okvish" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-twitter"></i>
+    </a>
+    <a href="https://github.com/OkVish" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-github"></i>
+    </a>
+    <a href="https://ar.linkedin.com/in/1vish" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-linkedin"></i>
+    </a>
+    <a href="https://www.instagram.com/okvish/?hl=es-la" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-instagram"></i>
+    </a>
+    <a href="victor.shanahan46@gamil.com" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-envelope"></i>
+    </a>
+
+  </div>
+  <a type="button" class="btn btn-primary" id="loginbtn" data-bs-toggle="modal" data-bs-target="#login"><i
+      class="bi bi-person-square"></i></a>
+</nav>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="login-container">
+          <h2>Iniciar sesión</h2>
+          <form (ngSubmit)="login()">
+            <div class="form-group">
+              <label for="username">Nombre de usuario</label>
+              <input type="text" [(ngModel)]="username" name="username" id="username"
+                placeholder="Ingrese su nombre de usuario" required>
+              <div class="error-message" *ngIf="showUsernameError">Nombre de usuario incorrecto</div>
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input type="password" [(ngModel)]="password" name="password" id="password"
+                placeholder="Ingrese su contraseña" required>
+              <div class="error-message" *ngIf="showPasswordError">Contraseña incorrecta</div>
+            </div>
+            <button type="submit" (click)="login(); loginModal.dismiss()">Iniciar sesión</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
