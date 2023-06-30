@@ -1,31 +1,45 @@
-.container-fluid{
+.container-fluid {
   height: 80px;
   background-color: #00171F;
-  color: aliceblue;
-  font-size: 50px;
+  font-size: 2.5rem;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: row;
+  align-items: center;
 }
 
-#ArgPro{
+#ArgPro {
   height: 100px;
-  margin-top: -15px;
+  min-width: 160px;
 }
 
-.redes {
-  margin-right: 0.5em;
-  margin-top: -6px;
+#loginbtn {
+  width: 3.125rem;
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem;
+  margin: 0.3125rem;
+  border: 0.125rem solid white;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+  background-color: transparent;
 }
 
-#redes {
-  width: 50px;
-  padding: 5px;
+#loginbtn i {
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in;
 }
 
-.login{
-  margin-left: 20px;
+#loginbtn:hover {
+  background-color: white;
+  border: 0.125rem solid #0d6efd;
+}
+
+#loginbtn:hover i {
+  color: black;
 }
 
 .btn {
@@ -33,14 +47,14 @@
 }
 
 .iconos-redes-sociales a {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2px;
-  margin: 5px;
-  border: 2px solid white;
+  padding: 0.125rem;
+  margin: 0.3125rem;
+  border: 0.125rem solid white;
   border-radius: 50%;
   transition: all 0.2s ease-in;
 }
@@ -53,7 +67,7 @@
 
 .iconos-redes-sociales a:hover {
   background-color: white;
-  border: 2px solid #0d6efd;
+  border: 0.125rem solid #0d6efd;
 }
 
 .iconos-redes-sociales a:hover i {
@@ -63,14 +77,74 @@
 @media (max-width: 760px) {
   .container-fluid {
     flex-direction: column;
-    flex-wrap: wrap;
-    height: fit-content;
+    height: auto;
+    justify-content: flex-start;
+    padding: 1rem;
   }
 
-    .iconos-redes-sociales a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .iconos-redes-sociales {
+    justify-content: flex-start;
+    padding-right: 0;
+    margin-top: 1rem;
+    order: -1;
   }
 
+  .iconos-redes-sociales a {
+    margin: 0.5rem;
+  }
 }
+
+/* Modal Login */
+
+#login{
+  width: fit-content;
+    padding-left: 40%;
+}
+
+h2,.alert{
+  text-align: center;
+}
+
+
+form {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #026cc8;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+

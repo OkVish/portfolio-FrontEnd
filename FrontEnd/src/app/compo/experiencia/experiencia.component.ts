@@ -1,100 +1,81 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Education } from 'src/app/model/education';
-import { EducationService } from '../services/education.service';
+import { Experiencia } from 'src/app/model/experiecia';
+import { ExperienciaService } from '../../services/experiencia.service';
 
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
   styleUrls: ['./experiencia.component.css']
 })
-
 export class ExperienciaComponent implements OnInit {
-  public educations: Education[] = [];
-  public editEducation: Education | undefined;
-  public deleteEducation: Education | undefined;
+  public experiencias: Experiencia[] = [];
+  public newExperiencia: Experiencia = {
+    id: 0,
+    nombreexp: '',
+    descripcionexp: '',
+    badges: '',
+    inicioexp: new Date,
+    finexp: new Date
+  }; 
+  public selectedExperiencia: Experiencia = {
+    id: 0,
+    nombreexp: '',
+    descripcionexp: '',
+    badges: '',
+    inicioexp: new Date,
+    finexp: new Date
+  }; 
 
-  constructor(
-    private educationService: EducationService,) { }
+  constructor(private experienciaService: ExperienciaService) { }
+
   ngOnInit(): void {
-    this.getEducation();
-  }
-  public getEducation(): void {
-    this.educationService.getEducation().subscribe({
-      next: (response: Education[]) => {
-        this.educations = response;
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log('error');
-      },
-    });
-  }
-  public onOpenModal(mode: string, education?: Education): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    if (mode === 'add') {
-      button.setAttribute('data-target', '#addEducationModal');
-    } else if (mode === 'delete') {
-      this.deleteEducation = education;
-      button.setAttribute('data-target', '#deleteEducationModal');
-    } else if (mode === 'edit') {
-      this.editEducation = education;
-      button.setAttribute('data-target', '#editEducationModal');
-    }
-
-    container?.appendChild(button);
-    button.click();
+    this.getExperiencias();
   }
 
-  public onAddEducation(addForm: NgForm): void {
-    document.getElementById('add-education-form')?.click();
-    this.educationService.addEducation(addForm.value).subscribe({
-      next: (response: Education) => {
-        console.log(response);
-        this.getEducation();
-        addForm.reset();
+  getExperiencias(): void {
+    this.experienciaService.getExperiencia().subscribe(
+      (experiencias: Experiencia[]) => {
+        this.experiencias = experiencias;
       },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      },
-    });
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
-  public onUpdateEducation(education: Education): void {
-    this.editEducation = education;
-    this.educationService.updateEducation(education).subscribe({
-      next: (response: Education) => {
-        console.log(response);
-        this.getEducation();
+  addExperiencia(experiencia: Experiencia): void {
+    this.experienciaService.addExperiencia(experiencia).subscribe(
+      (newExperiencia: Experiencia) => {
+        this.experiencias.push(newExperiencia);
       },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-      },
-    });
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
-  public onDeleteEducation(idEdu: number): void {
-    this.educationService.deleteEducation(idEdu).subscribe({
-      next: (response: void) => {
-        console.log(response);
-        this.getEducation();
+  updateExperiencia(experiencia: Experiencia): void {
+    this.experienciaService.updateExperiencia(experiencia).subscribe(
+      (updatedExperiencia: Experiencia) => {
+        const index = this.experiencias.findIndex(e => e.id === updatedExperiencia.id);
+        if (index !== -1) {
+          this.experiencias[index] = updatedExperiencia;
+        }
       },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-      },
-    });
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
+  deleteExperiencia(experienciaId: number): void {
+    this.experienciaService.deleteExperiencia(experienciaId).subscribe(
+      () => {
+        this.experiencias = this.experiencias.filter(e => e.id !== experienciaId);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
 }
-
-
-
-
-
-
-

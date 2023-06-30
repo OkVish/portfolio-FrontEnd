@@ -1,8 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, NgModule, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
-import { Usuario } from 'src/app/model/usuario';
-import { HeaderService } from '../services/header.service';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 
 @Component({
@@ -10,31 +8,26 @@ import { HeaderService } from '../services/header.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent {
+  username!: string;
+  password!: string;
+  loginError: boolean = false;
 
-  public usuario : Usuario | undefined;
-  public editUsuario: Usuario | undefined;
+  constructor(private authService: AuthService, private router:Router) { }
 
-  constructor(private headerService : HeaderService){}
-
-  ngOnInit(): void{
-    this.getUser();
-  }
-
-
-    public getUser():void{
-      this.headerService.getUser().subscribe({
-        next: (response: Usuario) =>{
-          this.usuario=response;
+  login() {
+    this.authService.login(this.username, this.password)
+      .subscribe(
+        response => {
+          // Manejar la respuesta exitosa, redirigir al usuario, mostrar mensaje, etc.
+          console.log('Inicio de sesión exitoso');
+          this.router.navigateByUrl('/home');
         },
-        error:(error:HttpErrorResponse)=>{
-          alert(error.message);
+        error => {
+          // Manejar el error, mostrar mensaje de error, etc.
+          this.loginError = true;
         }
-      })
-    }
+      );
   }
-
-
-
-
+}
 

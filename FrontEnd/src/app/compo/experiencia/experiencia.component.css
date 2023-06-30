@@ -1,9 +1,6 @@
 h1 {
   text-align: center;
-  text-decoration: underline;
-  font-style: italic;
 }
-
 .experiencia {
   padding: 40px 40px 60px 40px;
 }
@@ -45,4 +42,8 @@ h1 {
 
 .badge {
   margin: 5px;
+}
+
+button{
+  width: fit-content;
 }

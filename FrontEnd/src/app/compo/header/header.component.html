@@ -1,6 +1,8 @@
 <nav class="container-fluid">
+
   <a> <img src="../../../assets/ArgPRO.png" alt="Logo Argentina Programa" class="img-fluid" id="ArgPro"></a>
-  <div class="iconos-redes-sociales d-flex flex-wrap align-items-center justify-content-center">
+
+  <div class="iconos-redes-sociales d-flex flex-wrap align-items-center ">
     <a href="https://twitter.com/okvish" target="_blank" rel="noopener noreferrer">
       <i class="bi bi-twitter"></i>
     </a>
@@ -16,6 +18,41 @@
     <a href="victor.shanahan46@gamil.com" target="_blank" rel="noopener noreferrer">
       <i class="bi bi-envelope"></i>
     </a>
-    <div class="login"><a ><i class="bi bi-person-plus-fill"></i></a></div>
+
   </div>
+  <a type="button" class="btn btn-primary" id="loginbtn" data-bs-toggle="modal" data-bs-target="#login"><i
+      class="bi bi-person-square"></i></a>
 </nav>
+
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="login-container">
+          <h2>Iniciar sesión</h2>
+        <form>
+          <div>
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" [(ngModel)]="username" name="username" required placeholder="Nombre usuario">
+          </div>
+          <div>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" [(ngModel)]="password" name="password" required placeholder="Contraseña">
+          </div>
+          <button type="submit">Ingresar</button>
+        </form>
+        <p *ngIf="loginError" class="alert alert-danger">Datos incorrectos.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div> 

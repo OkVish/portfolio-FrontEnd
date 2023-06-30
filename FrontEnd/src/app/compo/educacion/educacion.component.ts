@@ -1,98 +1,82 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Education } from 'src/app/model/education';
-import { EducationService } from '../services/education.service';
-import { NgForm } from '@angular/forms';
+import { Component, Directive, OnInit } from "@angular/core";
+import { Education } from "src/app/model/education";
+import { EducationService } from "src/app/services/education.service";
+
 
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
-  styleUrls: ['./educacion.component.css']
+  styleUrls: ['./educacion.component.css'],
+  
 })
-export class EducacionComponent implements OnInit {
+
+export class EducationComponent implements OnInit {
   public educations: Education[] = [];
-  public editEducation: Education | undefined;
-  public deleteEducation: Education | undefined;
+  public newEducation: Education = {
+    nombreedu: "",
+    lugaredu: "",
+    cursoedu: "",
+    urledu: "",
+    id: 0
+  }; 
+  public selectedEducation: Education = {
+    nombreedu: "",
+    lugaredu: "",
+    cursoedu: "",
+    urledu: "",
+    id: 0
+  }; 
 
-  constructor(
-    private educationService: EducationService,) { }
+  constructor(private educationService: EducationService) { }
+
   ngOnInit(): void {
-    this.getEducation();
-  }
-  public getEducation(): void {
-    this.educationService.getEducation().subscribe({
-      next: (response: Education[]) => {
-        this.educations = response;
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log('error');
-      },
-    });
-  }
-  public onOpenModal(mode: string, education?: Education): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    if (mode === 'add') {
-      button.setAttribute('data-target', '#addEducationModal');
-    } else if (mode === 'delete') {
-      this.deleteEducation = education;
-      button.setAttribute('data-target', '#deleteEducationModal');
-    } else if (mode === 'edit') {
-      this.editEducation = education;
-      button.setAttribute('data-target', '#editEducationModal');
-    }
-
-    container?.appendChild(button);
-    button.click();
+    this.getEducations();
   }
 
-  public onAddEducation(addForm: NgForm): void {
-    document.getElementById('add-education-form')?.click();
-    this.educationService.addEducation(addForm.value).subscribe({
-      next: (response: Education) => {
-        console.log(response);
-        this.getEducation();
-        addForm.reset();
+  getEducations(): void {
+    this.educationService.getEducation().subscribe(
+      (educations: Education[]) => {
+        this.educations = educations;
       },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      },
-    });
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
-  public onUpdateEducation(education: Education): void {
-    this.editEducation = education;
-    this.educationService.updateEducation(education).subscribe({
-      next: (response: Education) => {
-        console.log(response);
-        this.getEducation();
+  addEducation(education: Education): void {
+    this.educationService.addEducation(education).subscribe(
+      (newEducation: Education) => {
+        this.educations.push(newEducation);
       },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-      },
-    });
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
-  public onDeleteEducation(idEdu: number): void {
-    this.educationService.deleteEducation(idEdu).subscribe({
-      next: (response: void) => {
-        console.log(response);
-        this.getEducation();
+  updateEducation(education: Education): void {
+    this.educationService.updateEducation(education).subscribe(
+      (updatedEducation: Education) => {
+        const index = this.educations.findIndex(e => e.id === updatedEducation.id);
+        if (index !== -1) {
+          this.educations[index] = updatedEducation;
+        }
       },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-      },
-    });
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
+  deleteEducation(educationId: number): void {
+    this.educationService.deleteEducation(educationId).subscribe(
+      () => {
+        this.educations = this.educations.filter(e => e.id !== educationId);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
-
-
-
-
-
-
+}

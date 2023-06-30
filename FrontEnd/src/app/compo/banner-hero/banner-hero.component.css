@@ -1,14 +1,15 @@
-.container-fluid{
+.container-fluid {
   display: flex;
   flex-direction: row;
-  height: 700px;;
+  height: 700px;
   width: 100%;
-  background-image: url(src\assets\banner.png);
-  background-size: 100% 100%;
+  background: #000428;
+  background: -webkit-linear-gradient(to right,#5c25a0,#026cc8);
+  background: linear-gradient(to right, #5c25a0, #026cc8);
   position: relative;
 }
 
-img{
+img {
   position: absolute;
   height: 350px;
   width: 300px;
@@ -18,15 +19,16 @@ img{
 }
 
 @media (max-width: 375px) {
-  img{
+  img {
     position: absolute;
-      height: 180px;
-      width: 190px;
-      top: 75%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    height: 180px;
+    width: 190px;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-  .container-fluid{
+
+  .container-fluid {
     height: 400px;
   }
 }
